@@ -14,3 +14,6 @@ go run server/server.go
 ```
 
 Navigate to localhost:8080
+
+# Credit
+* [This blog post](https://withblue.ink/2020/10/03/go-webassembly-http-requests-and-promises.html)

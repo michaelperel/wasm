@@ -17,6 +17,8 @@
         <button v-on:click="add">Add</button>
         <button v-on:click="subtract">Subtract</button>
         <p v-show="result">Result: {{ result }}</p>
+        <p v-show="quote">Quote: {{ quote }}</p>
+        <button v-on:click="getQuote">Get Quote</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="./wasm_exec.js"></script>

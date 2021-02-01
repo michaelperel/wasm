@@ -6,10 +6,9 @@ import (
 	"net/http"
 	"strconv"
 	"syscall/js"
-	"time"
 )
 
-func getRequest(this js.Value, args []js.Value) interface{} {
+func getTaylorSwiftQuote(this js.Value, args []js.Value) interface{} {
 	// Get the URL as argument
 	// args[0] is a js.Value, so we need to get a string out of it
 	requestURL := args[0].String()
@@ -65,14 +64,6 @@ func getRequest(this js.Value, args []js.Value) interface{} {
 	return promiseConstructor.New(handler)
 }
 
-// This function demonstrates using Javascript objects in Go
-func date(this js.Value, i []js.Value) interface{} {
-	dateConstructor := js.Global().Get("Date")
-	now := time.Now()
-
-	return dateConstructor.New(now.Unix() * 1000)
-}
-
 func add(this js.Value, i []js.Value) interface{} {
 	value1, _ := strconv.Atoi(i[0].String())
 	value2, _ := strconv.Atoi(i[1].String())
@@ -88,10 +79,9 @@ func subtract(this js.Value, i []js.Value) interface{} {
 }
 
 func registerCallbacks() {
-	js.Global().Set("date", js.FuncOf(date))
 	js.Global().Set("add", js.FuncOf(add))
 	js.Global().Set("subtract", js.FuncOf(subtract))
-	js.Global().Set("getRequest", js.FuncOf(getRequest))
+	js.Global().Set("getTaylorSwiftQuote", js.FuncOf(getTaylorSwiftQuote))
 }
 
 func main() {
